@@ -23,6 +23,5 @@ public class Main {
         cart2.calculateTotalPrice();
         System.out.println(cart2);
 
-
     }
 }
