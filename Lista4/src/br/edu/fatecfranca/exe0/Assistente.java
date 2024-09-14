@@ -25,7 +25,8 @@ public class Assistente extends Funcionario {
     public String toString(){
         return super.toString() + "\nHoraExtra: " + horaExtra;
     }
-    @Override
+
+
     public float calculaSalario(){
         return this.salario + (horaExtra * 40);
     }
