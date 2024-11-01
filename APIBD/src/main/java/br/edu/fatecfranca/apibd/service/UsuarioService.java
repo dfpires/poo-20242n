@@ -32,6 +32,7 @@ public class UsuarioService {
         newUser.setUsername(usuario.getUsername());
         return usuarioRepository.save(newUser);
     }
+    /*
     // remove usuário
     public void excluir(Long id){
         if (usuarioRepository.existsById(id)){
@@ -51,4 +52,6 @@ public class UsuarioService {
         // o save serve também para atualizar
         return usuarioRepository.save(newUser);
     }
+    */
+
 }

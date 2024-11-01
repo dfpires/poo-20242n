@@ -1,14 +1,12 @@
 package br.edu.fatecfranca.apibd.controller;
 
+import br.edu.fatecfranca.apibd.dto.UsuarioDTO;
 import br.edu.fatecfranca.apibd.model.Usuario;
 import br.edu.fatecfranca.apibd.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,5 +32,10 @@ public class UsuarioController {
                         new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @PostMapping
+    public ResponseEntity<?> salvar(@RequestBody UsuarioDTO usuarioDTO){
+        Usuario usuario = usuarioService.salva(usuarioDTO);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
+    }
 
 }
