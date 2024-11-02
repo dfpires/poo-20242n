@@ -38,4 +38,27 @@ public class UsuarioController {
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletar(@PathVariable Long id){
+        try {
+            usuarioService.excluir(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO){
+
+        try {
+            usuarioDTO.setId(id);
+            return new ResponseEntity<>(usuarioService.atualiza(usuarioDTO), HttpStatus.OK);
+        }
+        catch(IllegalArgumentException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

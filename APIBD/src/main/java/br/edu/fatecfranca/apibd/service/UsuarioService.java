@@ -30,9 +30,9 @@ public class UsuarioService {
         newUser.setNome(usuario.getNome());
         newUser.setPassword(usuario.getPassword());
         newUser.setUsername(usuario.getUsername());
-        return usuarioRepository.save(newUser);
+        return usuarioRepository.save(newUser); // insere pois não tem id
     }
-    /*
+
     // remove usuário
     public void excluir(Long id){
         if (usuarioRepository.existsById(id)){
@@ -44,14 +44,18 @@ public class UsuarioService {
     }
 
     public Usuario atualiza(UsuarioDTO usuario){
-        Usuario newUser = new Usuario();
-        newUser.setNome(usuario.getNome());
-        newUser.setPassword(usuario.getPassword());
-        newUser.setUsername(usuario.getUsername());
-        newUser.setId(usuario.getId());
-        // o save serve também para atualizar
-        return usuarioRepository.save(newUser);
+        if (usuarioRepository.existsById(usuario.getId())) {
+            Usuario newUser = new Usuario();
+            newUser.setNome(usuario.getNome());
+            newUser.setPassword(usuario.getPassword());
+            newUser.setUsername(usuario.getUsername());
+            newUser.setId(usuario.getId());
+            // o save serve também para atualizar
+            return usuarioRepository.save(newUser); // atualização, pois tem id
+        }
+        else {
+            throw new IllegalArgumentException("Usuário não encontado");
+        }
     }
-    */
 
 }
