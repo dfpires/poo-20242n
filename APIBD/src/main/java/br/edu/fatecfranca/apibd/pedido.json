@@ -1,0 +1,17 @@
+{
+  "idUsuario": 1,
+  "status": "aprovado",
+  "data": "2024-11-08",
+  "itens": [
+    {
+      "idProduto": 10,
+      "preco": 100,
+      "qtde": 30
+    },
+    {
+      "idProduto": 11,
+      "preco": 500,
+      "qtde": 3
+    }
+  ]
+}
